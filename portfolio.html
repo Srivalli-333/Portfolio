@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My portfolio website</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <script src="https://kit.fontawesome.com/bc2bf89d10.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#Education">Education</a></li>
+                <li><a href="#Skills">Skills</a></li>
+                <li><a href="#contact">contact</a></li>
+        
+            </ul>
+            <i class="fa-solid fa-bars"></i>
+        </nav>
+    </div>
+            <h1>Hi, I'm <span>Lakshmi Srivalli</span> <br>from KIET group of Institutions</h1>
+    </div>
+<!----------------about----------->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="WhatsApp Image 2024-02-29 at 9.50.54 PM.jpeg"height="700" width="500">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p> HELLO GUYS I AM B.LAKSHMI SRIVALLI CURRENTLY PURSUING B-TECH 2ND YEAR IN KIET GROUP OF INSTITUTIONS. I HAVE INTRESTED TO DO CODING WHEN EVER ITS FREETIME,
+                    MY HOBBIES...I HAVE A INTERSETED ON READING OLD BOOKS, AND I LIKE TO WATCH MODEL STORIES READING. MY DREAM IS TO BECOME A SOFTWARE DEVELOPER.
+            
+                </p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('Education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="Education">
+                    <ul>
+                        <li><span>2022</span><br>Studying at KIET GROUP OF INSTITUTIONS</li>
+                        <li><span>2022</span><br>Studied at ST MARY'S SCHOOL KAMAVARAPUKKOTA</li>
+                        <li><span>2020</span><br>Studied aT VIDYA VIKAS JANGAREDDYGUDEM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------programming skills------------------>
+<div id="Skills">
+    <div class="container">
+        <h1 class="sub-title">Skills</h1>
+        <div class="skills_list">
+            <div>
+                <i class="fa-brands fa-python"></i>
+                <h2>Basics of Python</h2>
+                <p>
+                    I have learnt basics of python and i am researching on it.
+                </p>
+                <a href="#">know more</a>
+            </div>
+            <div>
+                <i class="fa-brands fa-html5"></i>
+                <h2>Basics of HTML</h2>
+                <p>
+                    I have learnt basics of HTML and i can design an web page.
+                </p>
+                <a href="#">know more</a>
+            </div>
+            <div>
+                <i class="fa-brands fa-css3-alt"></i>
+                <h2>Basics of CSS</h2>
+                <p>
+                    I have learnt basics of CSS and i can give designs inside the webpage.
+                </p>
+                <a href="#">know more</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---------------contact------------>
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-envelope"></i>bsrivalli606@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>7093245612</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://instagram.com/valli_4592"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://twitter.com"><i class="fa-brands fa-twitter-square"></i></a>
+                    <a href="https://linkedin.com/in/srivalli_7093245612"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/Srivalli-222/FMML-LAB-1.git"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <a href="" class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="phone no" name="contact no" placeholder="Your contact no" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">submit</button>
+                </form>
+                <msg id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>copyright@ Srivalli Made this portofolio <i class="fa-solid fa-heart"></i></p>
+    </div>
+</div>
+<!-----------------------------java script------------------------------------>
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz2LmRo8wfIrs-fz7X1UNuFp0sQtiGSHDg8WWOYaVCcWVEBy4aOaDiuGbK_bsuw1mwhyA/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
